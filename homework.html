@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *,
+    body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-evenly;
+      flex-direction: row;
+      background: url(./下載.jfif)no-repeat center/cover;
+      position: relative;
+    }
+
+    .mb {
+      width: 33%;
+    }
+
+    .center {
+      width: 33%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: rebeccapurple;
+    }
+
+    #game {
+      border: 1px solid black;
+      width: 50vh;
+      height: 80vh;
+      background: url(./huiseqiangbibeijing-36953336_3.jpg) no-repeat center/cover;
+    }
+
+    .game1{
+      cursor: url(./cursor_black.png)50 50 ,auto;
+    }
+
+    .game2{
+      cursor: url(./bonk-002.ico)80 10, auto;
+    }
+
+    .hole {
+      border: 1px solid black;
+      width: 10vh;
+      height: 16vh;
+    }
+
+    .con {
+      display: flex;
+      flex-direction: column;
+      /* flex-wrap: wrap; */
+      background: brown;
+      width: 50vh;
+      height: 5vh;
+    }
+
+    .startcon {
+      display: flex;
+      flex-direction: row;
+      /* flex-wrap: wrap; */
+      width: 100%;
+      height: 50%;
+      background: purple;
+      position: relative;
+    }
+
+    #start {
+      width: 20%;
+      height: 100%;
+      cursor: pointer;
+    }
+
+    .con1 {
+      width: 80%;
+      height: 100%;
+      background: royalblue;
+      position: absolute;
+      right: 0;
+    }
+
+    .col {
+      display: flex;
+      flex-direction: row;
+      /* flex-wrap: wrap; */
+      background: cadetblue;
+      width: 100%;
+      height: 50%;
+    }
+
+    .col>div:nth-child(1) {
+      text-align: center;
+      width: 20%;
+    }
+
+    .col>div:nth-child(2) {
+      width: 40%;
+    }
+
+    .col>div:nth-child(3) {
+      width: 40%;
+    }
+
+    .colsp {
+      display: flex;
+      flex-direction: row;
+      background: purple;
+    }
+
+    .colsp>div:nth-child(1) {
+      text-align: center;
+      width: 20%;
+      background: red;
+    }
+
+    .colsp>div {
+      width: 80%;
+      background: pink;
+    }
+
+    .del {
+      display: none;
+    }
+
+    .green {
+      background: url(./green.png)no-repeat center/cover;
+      /* Object-fit:contain; */
+    }
+
+    .red {
+      background: url(./red.png)no-repeat center/cover;
+      /* Object-fit:contain; */
+    }
+
+    .angery {
+      background: url(./angery.png)no-repeat center/cover;
+    }
+
+    .wow {
+      background: url(./wow.png)no-repeat center/cover;
+    }
+
+    .boom {
+      background: url(./boom.png)no-repeat center/cover;
+    }
+
+    .choose {
+      height: 40%;
+      width: 33%;
+      display: flex;
+      flex-direction: column;
+      /* background: palevioletred; */
+      position: relative;
+    }
+
+    .ch {
+      width: 100%;
+      height: 25%;
+      display: flex;
+      flex-direction: row;
+      /* background: peru; */
+    }
+
+    .ch input {
+      height: 50%;
+      width: 20%;
+      margin-left: 2%;
+      border-radius: 15px;
+      box-shadow: rgba(0, 0, 0, .5);
+      background-color: gray;
+      margin-top: 2rem;
+      color: rgb(214, 208, 208);
+    }
+
+    .le {
+      width: 50%;
+      height: 80%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      background: rgba(0, 0, 0, .5);
+      position: absolute;
+      color: white;
+      display: none;
+      bottom: 0;
+    }
+
+    .le img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      position: absolute;
+      top:0;
+    }
+    .le:nth-child(4){
+      left: 15%;
+    }
+    .le:nth-child(6){
+      right: 10%;
+    }
+
+    .ch input:hover {
+      cursor: pointer;
+    }
+
+    #gun:hover+.le,
+    #bonk:hover+.le,
+    #shoe:hover+.le {
+      display: block;
+    }
+    .mb{
+      color: white;
+      text-align: center;
+      line-height: 115;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="mb">圖片版權歸日本MTV台所有</div>
+  <div class="center">
+    <table id="game" class="game1">
+      <tr>
+        <td class="hole" id="hole21"></td>
+        <td class="hole" id="hole22"></td>
+        <td class="hole" id="hole23"></td>
+        <td class="hole" id="hole24"></td>
+        <td class="hole" id="hole25"></td>
+      </tr>
+      <tr>
+        <td class="hole" id="hole16"></td>
+        <td class="hole" id="hole17"></td>
+        <td class="hole" id="hole18"></td>
+        <td class="hole" id="hole19"></td>
+        <td class="hole" id="hole20"></td>
+      </tr>
+      <tr>
+        <td class="hole" id="hole11"></td>
+        <td class="hole" id="hole12"></td>
+        <td class="hole" id="hole13"></td>
+        <td class="hole" id="hole14"></td>
+        <td class="hole" id="hole15"></td>
+      </tr>
+      <tr>
+        <td class="hole" id="hole6"></td>
+        <td class="hole" id="hole7"></td>
+        <td class="hole" id="hole8"></td>
+        <td class="hole" id="hole9"></td>
+        <td class="hole" id="hole10"></td>
+      </tr>
+      <tr>
+        <td class="hole" id="hole1"></td>
+        <td class="hole" id="hole2"></td>
+        <td class="hole" id="hole3"></td>
+        <td class="hole" id="hole4"></td>
+        <td class="hole" id="hole5"></td>
+      </tr>
+    </table>
+    <div class="con">
+      <div class="startcon">
+        <input type="button" value="開始遊戲" id="start">
+        <div class="con1">目前分數:<span id="score">0</span></div>
+      </div>
+      <div class="col">
+        <div>王者👉</div>
+        <div>玩家:<span id="highname">???</span></div>
+        <div>最高分:<span id="highscore"></span></div>
+      </div>
+      <div id="dd" class="colsp del">
+        <div>死亡名單🙏</div>
+        <div>死者姓名:<span id="dead">???</span></div>
+      </div>
+    </div>
+  </div>
+  <!-- 右邊 -->
+  <div class="choose">
+
+    <div class="ch">
+      <input id="gun" type="button" name="arms" value="平平無奇的武器">
+      <div class="le">
+        <p>平凡的一把槍。能夠打傷普丁，但對基廉列克沒什麼用。</p>
+        <img src="./gun.png">
+      </div>
+      <input id="bonk" type="button" name="arms" value="bonk bonk柴">
+      <div class="le">
+        <p>兇萌的柴柴一棍就能把普丁打到骨折了。</p>
+        <img src="./bonk.png">
+      </div>
+      <input id="shoe" type="button" name="arms" value="基廉列克的摯愛" onclick="alert('此功能尚在開發中')">
+      <div class="le">
+        <p>被最愛的帆布鞋打到，基廉列克好像沒那麼生氣耶。</p>
+        <img src="./shoe-5.png">
+      </div>
+    </div>
+  </div>
+  </div>
+  <script>
+    const holes = document.getElementsByClassName('hole')
+    const start = document.getElementById('start')
+    const scoreText = document.getElementById('score')
+    const highnameText = document.getElementById('highname')
+    const highscoreText = document.getElementById('highscore')
+    const deadText = document.getElementById('dead')
+    const dd = document.getElementById('dd')
+    const gun=document.getElementById('gun')
+    const bonk=document.getElementById('bonk')
+    const gAme=document.getElementById('game')
+    const audio=new Audio()
+
+
+    //選武器
+      bonk.onclick=()=>{
+      gAme.classList.remove("game1")
+      gAme.classList.add("game2")
+    }
+      gun.onclick=()=>{
+      gAme.classList.remove("game2")
+      gAme.classList.add("game1")
+      }
+
+    //最高分
+    const high = { score: 0, name: '???' }
+    //紀錄點到boom
+    const bom = { score: -999, name: '???' }
+    //計分
+    let score = 0
+    //計時器
+    let timer = 0
+
+    //讀取資料
+    const storage = JSON.parse(localStorage.getItem('rabbit'))
+    const redrabbit = JSON.parse(localStorage.getItem('redrabbit'))
+    //如果有資料
+    if(storage){
+        high.name=storage.name
+        high.score=storage.score
+        //修改最高分，顯示文字
+        highnameText.innerText=high.name
+        highscoreText.innerText=high.score
+      }
+
+
+
+    start.onclick = () => {
+      //停用開始按鈕
+      start.disabled = true
+      //重設分數
+      score = 0
+      scoreText.innerText = score
+      //隱藏
+      dd.classList.add('del')
+      //音效
+      audio.src='./dance time.mp3'
+      audio.play()
+      //每半秒變換一次
+      timer = setInterval(game, 500)
+      game()
+      //十秒遊戲結束
+      setTimeout(end, 10 * 1000)
+    }
+    //每秒變換顏色
+    const game = () => {
+      for (const hole of holes) {
+        //移除顏色
+        hole.classList.remove('red')
+        hole.classList.remove('green')
+        hole.classList.remove('wow')
+        hole.classList.remove('angery')
+        hole.classList.remove('boom')
+      }
+      //隨機抽三個變換顏色，不考慮重複
+      for (let i = 0; i < 2; i++) {
+        holes[Math.round(Math.random() * (holes.length - 1))].classList.add('red')
+        holes[Math.round(Math.random() * (holes.length - 1))].classList.add('green')
+      }
+      for (let j = 0; j <= 0; j++) {
+        holes[Math.round(Math.random() * (holes.length - 1))].classList.add('boom')
+      }
+    }
+
+
+    //加分、減分、換圖
+    for (const hole of holes) {
+      hole.onclick = () => {
+        if(gAme.className==("game1")){
+        if (hole.classList.contains('red')) {
+          hole.classList.replace('red', 'angery')
+          score--
+          scoreText.innerText = score
+        } else if (hole.classList.contains('green')) {
+          hole.classList.replace('green', 'wow')
+          score++
+          scoreText.innerText = score
+        } else if (hole.classList.contains('boom')) {
+          clearInterval(timer)
+          score = -999
+          scoreText.innerText = score
+          for (const hole of holes) {
+            hole.classList.remove('red')
+            hole.classList.remove('green')
+            hole.classList.remove('wow')
+            hole.classList.remove('angery')
+            hole.classList.remove('boom')
+          }
+          start.disabled = false
+          alert(`基廉列克已爆走，請盡速逃命`)
+        }
+      }else if(gAme.className==("game2")){
+        if (hole.classList.contains('red')) {
+          hole.classList.replace('red', 'angery')
+          score--
+          scoreText.innerText = score
+        } else if (hole.classList.contains('green')) {
+          hole.classList.replace('green', 'wow')
+          score+=2
+          scoreText.innerText = score
+        } else if (hole.classList.contains('boom')) {
+          clearInterval(timer)
+          score = -999
+          scoreText.innerText = score
+          for (const hole of holes) {
+            hole.classList.remove('red')
+            hole.classList.remove('green')
+            hole.classList.remove('wow')
+            hole.classList.remove('angery')
+            hole.classList.remove('boom')
+          }
+          start.disabled = false
+          alert(`基廉列克已爆走，請盡速逃命`)
+      }
+      }
+    }
+  }
+
+    //遊戲停止
+    const end = () => {
+      //停止變換顏色
+      clearInterval(timer)
+      //顏色清掉
+      for (const hole of holes) {
+        hole.classList.remove('red')
+        hole.classList.remove('green')
+        hole.classList.remove('wow')
+        hole.classList.remove('angery')
+        hole.classList.remove('boom')
+      }
+      //啟用開始按鈕
+      start.disabled = false
+      //跳出訊息
+      alert(`遊戲結束，你得到${score}分`)
+
+      if (score > high.score) {
+        localStorage.setItem('rabbit', '請輸入名字')
+        //請玩家輸入名字
+        const input = prompt('最高分，請輸入名字')
+        //修改最高分變數資料
+        high.score = score
+        high.name = input || '???'
+        //修改最高分顯示文字
+        highnameText.innerText = high.name
+        highscoreText.innerText = high.score
+        //保存
+        //localStorage.setItme(資料名,文字)
+        //變數轉文字:JSON.stringify(變數)
+        localStorage.setItem('rabbit', JSON.stringify(high))
+      }
+
+      if (score == bom.score) {
+        localStorage.setItem('redrabbit', '請輸入名字')
+        //請玩家輸入名字
+        const input = prompt('請輸入死者姓名')
+        //修改死者變數資料
+        dead.name = input || '???'
+        //修改死者分數顯示文字
+        deadText.innerText = dead.name
+        //保存
+        //localStorage.setItme(資料名,文字)
+        //變數轉文字:JSON.stringify(變數)
+        localStorage.setItem('redrabbit', JSON.stringify(bom))
+        dd.classList.remove('del')
+      }
+    }
+
+
+  </script>
+</body>
+
+</html>
